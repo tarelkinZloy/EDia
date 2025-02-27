@@ -1,0 +1,2 @@
+# EDia
+Online diary project
