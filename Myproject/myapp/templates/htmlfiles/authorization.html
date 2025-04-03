@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=320">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Электронный дневник</title>
+    <link rel="stylesheet" href="{% static 'css/autorizcss.css' %}"> <!-- Подключение CSS -->
+    <link rel="icon" href="{% static 'images/1616.jpg' %}" type="image/x-icon">    
+</head>
+<body>
+    <header>
+        <h1>Авторизация</h1>
+    </header>
+    <section id="login">
+        <h2>Вход в систему</h2>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" required>
+            <input type="password" name="password" required>
+            <button type="submit">Войти</button>
+        </form>
+        
+        <p><a href="/reset-password">Восстановить пароль</a></p>
+    </section>
+</body>
+</html>
+
+    

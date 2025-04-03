@@ -1,0 +1,28 @@
+font-face {
+    font-family: 'Futura';
+    src: url('C:\HTdocs\FuturaPTMediumOblique.otf') format('otf'),
+         url('C:\HTdocs\FuturaPTMediumOblique.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: 'Futura', cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* Светлый фон */
+    color: #333;
+}
+
+header {
+    /*Заголовок*/
+    background: linear-gradient(70deg, #073487, #7c089c); /* Градиент от #0c4f96 к #007bff */
+    color: white;
+    padding: 1em;
+    text-align: center;
+    margin-bottom: 20px
+}
+header h1 {
+    margin: 0;
+    font-size: 2em;
+
+}

@@ -1,0 +1,100 @@
+3.1 Регистрация и аутентификация
+   - Возможность регистрации для всех категорий пользователей (ученики, учителя, родители).
+   - Система аутентификации с использованием логина и пароля.
+   - Восстановление пароля через электронную почту или SMS.
+
+   3.2 Панели пользователя
+   - Панель ученика: 
+     - Просмотр расписания уроков.
+     - Отслеживание оценок и успеваемости.
+     - Уведомления о новых заданиях и оценках.
+   - Панель преподавателя:
+     - Ввод и редактирование оценок.
+     - Создание и распространение заданий.
+     - Просмотр посещаемости.
+   - Панель родителя:
+     - Доступ к оценкам и расписанию своего ребенка.
+     - Получение уведомлений о результатах и происшествиях.
+   - Панель администратора:
+     - Управление пользователями.
+     - Настройка расписания и курсов.
+     - Генерация отчетов по успеваемости.
+
+   3.3 Контент
+   - Возможность прикрепления файлов (задания, документы).
+   - Обсуждения и комментарии по заданиям.
+
+   3.4 Уведомления
+   - Уведомления о новых оценках, заданиях и сообщениях.
+   - Настройка уведомлений (по электронной почте и в приложении).
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание занятий</title>
+</head>
+<body>
+    <h1>Расписание занятий</h1>
+
+    <form action="add_class.php" method="POST">
+        <label for="subject">Предмет:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="teacher">Учитель:</label>
+        <input type="text" id="teacher" name="teacher" required>
+
+        <label for="day_of_week">День недели:</label>
+        <select id="day_of_week" name="day_of_week" required>
+            <option value="Пн">Понедельник</option>
+            <option value="Вт">Вторник</option>
+            <option value="Ср">Среда</option>
+            <option value="Чт">Четверг</option>
+            <option value="Пт">Пятница</option>
+            <option value="Сб">Суббота</option>
+            <option value="Вс">Воскресенье</option>
+        </select>
+
+        <label for="time">Время:</label>
+        <input type="time" id="time" name="time" required>
+
+        <button type="submit">Добавить занятие</button>
+    </form>
+
+    <h2>Список занятий</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Предмет</th>
+                <th>Учитель</th>
+                <th>День недели</th>
+                <th>Время</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Здесь будут выводиться занятия из БД -->
+            <?php
+            include 'db.php'; // Подключите файл с настройками подключения к БД
+            $sql = "SELECT * FROM classes";
+            $result = $conn->query($sql);
+            
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                        <td>{$row['id']}</td>
+                        <td>{$row['subject']}</td>
+                        <td>{$row['teacher']}</td>
+                        <td>{$row['day_of_week']}</td>
+                        <td>{$row['time']}</td>
+                    </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5'>Нет занятий</td></tr>";
+            }
+            $conn->close(); // Закрываем соединение
+            ?>
+        </tbody>
+    </table>
+</body>
+</html>
