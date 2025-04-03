@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Электронный дневник</title>
+    <link rel="stylesheet" href="{% static 'css/profilecss.css' %}"> <!-- Подключение CSS -->
+    <link rel="icon" href="{% static 'images/1616.jpg' %}" type="image/x-icon">    
+</head>
+<body>
+    <header>
+        <h1>Профиль</h1>
+    </header>  
+    <body>
+
+        <div class="profile">
+            <h2>Профиль ученика</h2>
+            <p><strong>Фамилия, имя и отчество:</strong> Иванов Иван Иванович</p>
+            <p><strong>Фото:</strong></p>
+            <img src="ivanov_photo.jpg" alt="Фото ученика">
+            <p><strong>Класс/Группа:</strong> 10А</p>
+            <p><strong>Дата рождения:</strong> 01.01.2005</p>
+        </div>
+        
+        </body>
+</html>

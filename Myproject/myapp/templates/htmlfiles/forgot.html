@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Забыли свой пароль?</title>
+    <link rel="stylesheet" href="{% static 'css/autorizcss.css' %}"> <!-- Подключение CSS -->
+    <link rel="icon" href="{% static 'images/1616.jpg' %}" type="image/x-icon">    
+</head>
+
+<body>
+    <header>
+        <h1>Авторизация</h1>
+    </header>
+    <section id="forgot-password">
+        <h2>Забыли свой пароль?</h2>
+        <form action="/forgotpassword" method="POST" class="auth-form forgot-password">
+            {% csrf_token %}
+            <input type="email" name="email" required autofocus placeholder="Email" />
+            <button type="submit">Сбросить пароль</button>
+        </form>
+        
+        <p><a href="{% url 'home' %}">Вернуться к входу</a></p>
+    </section>
+</body>
+</html>
